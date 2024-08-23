@@ -1,5 +1,41 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "igrf"
+description = "IGRF13, IGRF12, IGRF11 models with simple object-oriented Python interface."
+keywords = ["geomagnetic", "igrf"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Fortran",
+  "Topic :: Scientific/Engineering :: Atmospheric Science"
+]
+dynamic = ["readme", "version"]
+requires-python = ">=3.9"
+dependencies = ["xarray", "numpy"]
+
+[project.scripts]
+findssh = "igrf.__main__:cli"
+
+[project.optional-dependencies]
+tests = ["pytest"]
+lint = ["flake8", "flake8-bugbear", "flake8-builtins", "flake8-blind-except", "mypy", "type-python-dateutil"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+version = {attr = "igrf.__version__"}
 
 [tool.black]
 line-length = 100
+
+[tool.mypy]
+files = "src/"
+ignore_missing_imports = true
+strict_optional = false
+allow_redefinition = true
+warn_unreachable = false

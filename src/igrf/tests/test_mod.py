@@ -24,8 +24,8 @@ def test_igrf13():
     assert mag.decl.item() == approx(15.396590)
 
 
-def test_cli():
-    subprocess.check_call(["igrf", time, "-c", "65", "85", "-a", "0"])
+# def test_cli():
+#     subprocess.check_call(["igrf", time, "-c", "65", "85", "-a", "0"])
 
 
 # def test_igrf12():

@@ -26,12 +26,22 @@ To get the IGRF Python development version, `git clone` and then:
 python -m pip install -e .
 ```
 
-Otherwise, for the latest release from PyPi:
+Otherwise, for the latest release from PyPI:
+
 ```sh
 python -m pip install igrf
 ```
 
+The first time you install IGRF, do once from Python:
+
+```python
+import igrf
+
+igrf.build()
+```
+
 Optionally, test the install with:
+
 ```sh
 pytest
 ```
